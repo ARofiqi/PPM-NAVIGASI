@@ -1,9 +1,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from '../screens/TabScreen/Home';
-import Profile from '../screens/TabScreen/Profile';
+import HomeScreen from '../screens/TabScreen/HomeScreen';
+import ListScreen from '../screens/TabScreen/ListScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Text} from 'react-native';
+
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
@@ -15,8 +16,8 @@ const TabNavigator = () => {
 
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'List') {
+            iconName = focused ? 'list' : 'list-outline';
           }
 
           return (
@@ -26,16 +27,17 @@ const TabNavigator = () => {
                 size={size}
                 color={color}
               />
-              <Text>{route.name === 'Home' ? 'Home' : 'Profile'}</Text>
+              <Text>{route.name === 'Home' ? 'Home' : 'List'}</Text>
             </>
           );
         },
-        tabBarActiveTintColor: 'tomato', // Warna tab aktif
-        tabBarInactiveTintColor: 'gray', // Warna tab tidak aktif
-        tabBarLabel: () => null, // Hilangkan label tab
+        tabBarActiveTintColor: '#3E7C17',
+        tabBarInactiveTintColor: 'gray',
+        headerShown: false,
+        tabBarLabel: () => null,
       })}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="List" component={ListScreen} />
     </Tab.Navigator>
   );
 };
